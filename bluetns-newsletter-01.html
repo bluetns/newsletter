@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>블루레터 Vol.01 | 도면 파일이 하루아침에 사라진다면?</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: #f0f2f5;
+    font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+    color: #1a1a2e;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 32px 16px;
+  }
+
+  /* Header */
+  .header {
+    background: #0a1628;
+    border-radius: 16px 16px 0 0;
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-icon {
+    width: 38px;
+    height: 38px;
+    background: #2563eb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -1px;
+  }
+
+  .logo-text {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .logo-sub {
+    color: #64748b;
+    font-size: 11px;
+    margin-top: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .issue-badge {
+    background: #1e3a5f;
+    color: #93c5fd;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(145deg, #0f2544 0%, #1a3a6b 100%);
+    padding: 44px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    background: rgba(37, 99, 235, 0.15);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -30px;
+    width: 160px;
+    height: 160px;
+    background: rgba(37, 99, 235, 0.08);
+    border-radius: 50%;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(37, 99, 235, 0.3);
+    color: #93c5fd;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid rgba(147, 197, 253, 0.2);
+  }
+
+  .hero-title {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title em {
+    color: #60a5fa;
+    font-style: normal;
+  }
+
+  .hero-desc {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Content area */
+  .content {
+    background: #ffffff;
+    padding: 0;
+  }
+
+  /* Key stat bar */
+  .stat-bar {
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+    padding: 16px 24px;
+    margin: 0 36px;
+    margin-top: 32px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .stat-bar-label {
+    font-size: 11px;
+    color: #2563eb;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .stat-bar-text {
+    font-size: 15px;
+    color: #1e3a5f;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  /* Section */
+  .section {
+    padding: 28px 36px;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .section:last-of-type {
+    border-bottom: none;
+  }
+
+  .section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .eyebrow-dot {
+    width: 6px;
+    height: 6px;
+    background: #2563eb;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .eyebrow-text {
+    font-size: 11px;
+    font-weight: 700;
+    color: #2563eb;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .section-body {
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.8;
+  }
+
+  /* Stats grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .stat-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 26px;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-number span {
+    color: #2563eb;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  /* Point list */
+  .point-list {
+    list-style: none;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .point-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .point-num {
+    background: #0a1628;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .point-content strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 3px;
+  }
+
+  .point-content p {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  /* Quote block */
+  .quote-block {
+    background: #fafafa;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    position: relative;
+  }
+
+  .quote-mark {
+    font-size: 48px;
+    color: #dbeafe;
+    font-family: Georgia, serif;
+    line-height: 0.8;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .quote-text {
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .quote-source {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-top: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* BLUETNS insight */
+  .insight-box {
+    background: #0a1628;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin: 20px 0;
+  }
+
+  .insight-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #60a5fa;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .insight-label::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 2px;
+    background: #2563eb;
+  }
+
+  .insight-text {
+    font-size: 14px;
+    color: #cbd5e1;
+    line-height: 1.75;
+  }
+
+  .insight-text strong {
+    color: #fff;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 28px 36px;
+    text-align: center;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .cta-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 6px;
+  }
+
+  .cta-desc {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #2563eb;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+
+  /* Next issue */
+  .next-section {
+    padding: 20px 36px;
+    background: #fff;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .next-icon {
+    width: 36px;
+    height: 36px;
+    background: #eff6ff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+
+  .next-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .next-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #334155;
+  }
+
+  /* Footer */
+  .footer {
+    background: #0a1628;
+    border-radius: 0 0 16px 16px;
+    padding: 24px 36px;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .footer-logo {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .footer-addr {
+    font-size: 11px;
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  .footer-link {
+    font-size: 11px;
+    color: #64748b;
+    text-decoration: none;
+  }
+
+  .footer-bottom {
+    font-size: 11px;
+    color: #334155;
+    line-height: 1.6;
+  }
+
+  .unsubscribe {
+    color: #475569;
+    text-decoration: underline;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: #f1f5f9;
+    margin: 0 36px;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 480px) {
+    .wrapper { padding: 16px 8px; }
+    .header { padding: 20px 20px; border-radius: 12px 12px 0 0; }
+    .hero { padding: 32px 20px; }
+    .hero-title { font-size: 21px; }
+    .section { padding: 22px 20px; }
+    .stat-bar { margin: 0 20px; margin-top: 24px; }
+    .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .stat-number { font-size: 22px; }
+    .stat-label { font-size: 10px; }
+    .cta-section { padding: 24px 20px; }
+    .next-section { padding: 16px 20px; }
+    .footer { padding: 20px 20px; border-radius: 0 0 12px 12px; }
+    .footer-top { flex-direction: column; gap: 12px; }
+    .issue-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-area">
+      <div class="logo-icon">B</div>
+      <div>
+        <div class="logo-text">블루레터</div>
+        <div class="logo-sub">by BLUETNS</div>
+      </div>
+    </div>
+    <div class="issue-badge">Vol.01 · 2026.05.12 (매월 2·4주 화요일 발행)</div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-tag">🔒 이번 호 주제 — 보안</div>
+    <h1 class="hero-title">
+      도면 파일이<br>
+      <em>하루아침에 사라진다면?</em>
+    </h1>
+    <p class="hero-desc">
+      랜섬웨어 피해의 93%는 중소·중견기업에서 발생합니다.<br>
+      대기업 얘기가 아닙니다. 지금 우리 얘기입니다.
+    </p>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Stat bar -->
+    <div class="stat-bar" style="margin-top:32px;">
+      <div class="stat-bar-label">이번 호 핵심</div>
+      <div class="stat-bar-text">
+        2025년 국내 랜섬웨어 공격 전년 대비 40.5% 급증 —<br>
+        중소·중견기업이 전체 피해의 <strong>93%</strong>를 차지했습니다.
+      </div>
+    </div>
+
+    <!-- Section 1: 이슈 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">이번 주 이슈</div>
+      </div>
+      <h2 class="section-title">2025년 국내 랜섬웨어 공격, 전년 대비 40.5% 급증</h2>
+      <p class="section-body">
+        KISA(한국인터넷진흥원)와 안랩 ASEC 보고서에 따르면, 2025년 국내 랜섬웨어 공격 건수가 전년 대비 40.5% 증가한 274건을 기록했습니다. 2025년 10월까지만 집계해도 국내 기업 대상 공격이 56건으로 최근 5년 중 가장 많았으며, 그 중 중소·중견기업 피해가 전체의 93%에 달했습니다.
+      </p>
+
+      <div class="stats-grid" style="margin-top:20px;">
+        <div class="stat-card">
+          <div class="stat-number"><span>40.5</span>%</div>
+          <div class="stat-label">랜섬웨어 공격<br>전년 대비 증가</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number"><span>93</span>%</div>
+          <div class="stat-label">중소·중견기업<br>피해 비중</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number"><span>56</span>건</div>
+          <div class="stat-label">국내 기업 대상<br>최근 5년 최다</div>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">2025년 6월 국내 최대 온라인 서점 YES24가 랜섬웨어 공격을 받아 전 서비스가 약 5일간 마비됐습니다. 금전적 손실만 약 100억 원으로 추산됩니다.</p>
+        <div class="quote-source">— KISA 2025년 상반기 사이버 위협 동향 보고서</div>
+      </div>
+
+      <p class="section-body">돈을 줘도 돌아오지 않는다는 뜻입니다. 사후 대응보다 사전 예방이 훨씬 중요한 이유입니다.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section 2: AEC 위험 이유 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">업종 분석</div>
+      </div>
+      <h2 class="section-title">AEC·제조업이 특히 위험한 3가지 이유</h2>
+
+      <ul class="point-list">
+        <li class="point-item">
+          <div class="point-num">1</div>
+          <div class="point-content">
+            <strong>도면 파일의 가치가 높다</strong>
+            <p>수년간 축적한 CAD 도면, 설계 데이터는 복구 불가 시 프로젝트 전체가 멈춥니다. 공격자 입장에서 협박 효과가 극대화되는 대상입니다.</p>
+          </div>
+        </li>
+        <li class="point-item">
+          <div class="point-num">2</div>
+          <div class="point-content">
+            <strong>보안 투자는 상대적으로 적다</strong>
+            <p>IT 전담 인력이 없거나 1~2명인 경우가 대부분입니다. 패치 업데이트, 접근 권한 관리가 느슨해지기 쉽습니다.</p>
+          </div>
+        </li>
+        <li class="point-item">
+          <div class="point-num">3</div>
+          <div class="point-content">
+            <strong>백업이 있어도 안심할 수 없다</strong>
+            <p>2025년 상반기 기준, 랜섬웨어 피해 기업 중 백업 시스템까지 함께 암호화된 비율이 44%에 달합니다. 백업이 있다고 끝난 게 아닙니다.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section 3: BLUETNS 인사이트 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">블루티엔에스 시각</div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">BLUETNS INSIGHT</div>
+        <p class="insight-text">
+          이 통계가 AEC·제조업 IT담당자에게 의미하는 건 하나입니다.<br><br>
+          <strong>"언제 당하느냐의 문제이지, 당하느냐 마냐의 문제가 아닙니다."</strong><br><br>
+          엔드포인트 보안 솔루션이 없는 사무소라면, 지금이 도입을 검토할 가장 좋은 타이밍입니다. 사고 난 다음에 움직이는 건 항상 두 배로 비쌉니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <div class="cta-title">CAD 도면 데이터, 지금 안전한가요?</div>
+      <div class="cta-desc">블루티엔에스 Bitdefender GravityZone으로<br>랜섬웨어 위협에서 설계 자산을 지키세요.</div>
+      <a href="https://form.typeform.com/to/pdrGxY0X" class="cta-button" target="_blank" rel="noopener noreferrer">무료 상담 신청하기 →</a>
+    </div>
+
+    <!-- Next issue -->
+    <div class="next-section">
+      <div class="next-icon">📐</div>
+      <div>
+        <div class="next-label">다음 호 예고 · 5월 26일</div>
+        <div class="next-title">ZWCAD vs 오토캐드 — 가격만 다른 게 아닙니다</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">(주)블루티엔에스 BLUETNS</div>
+        <div class="footer-addr">
+          서울 서초구 강남대로 101길 43<br>
+          대표이사: 박인호 | Trust base is our pride
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="https://bluetns.co.kr/free" class="footer-link" target="_blank" rel="noopener noreferrer">홈페이지</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      블루레터는 매월 2·4주 화요일 오전 10시에 발행됩니다.<br>
+      본 메일은 블루티엔에스 뉴스레터 수신에 동의하신 분께 발송됩니다.<br>
+      수신을 원하지 않으시면 <a href="#" class="unsubscribe">여기</a>를 클릭해 주세요.
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
