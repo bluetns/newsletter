@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>블루레터 Vol.04 | 신·변종 랜섬웨어는 어떻게 막나 — EDR이 보는 세계</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: #f0f2f5;
+    font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+    color: #1a1a2e;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 32px 16px;
+  }
+
+  /* Header */
+  .header {
+    background: #0a1628;
+    border-radius: 16px 16px 0 0;
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-icon {
+    width: 38px;
+    height: 38px;
+    background: #2563eb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -1px;
+  }
+
+  .logo-text {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .logo-sub {
+    color: #64748b;
+    font-size: 11px;
+    margin-top: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .issue-badge {
+    background: #1e3a5f;
+    color: #93c5fd;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(145deg, #0f2544 0%, #1a3a6b 100%);
+    padding: 44px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    background: rgba(37, 99, 235, 0.15);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -30px;
+    width: 160px;
+    height: 160px;
+    background: rgba(37, 99, 235, 0.08);
+    border-radius: 50%;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(37, 99, 235, 0.3);
+    color: #93c5fd;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid rgba(147, 197, 253, 0.2);
+  }
+
+  .hero-title {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title em {
+    color: #60a5fa;
+    font-style: normal;
+  }
+
+  .hero-desc {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Content area */
+  .content {
+    background: #ffffff;
+    padding: 0;
+  }
+
+  /* Key stat bar */
+  .stat-bar {
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+    padding: 16px 24px;
+    margin: 0 36px;
+    margin-top: 32px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .stat-bar-label {
+    font-size: 11px;
+    color: #2563eb;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .stat-bar-text {
+    font-size: 15px;
+    color: #1e3a5f;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  /* Section */
+  .section {
+    padding: 28px 36px;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .section:last-of-type {
+    border-bottom: none;
+  }
+
+  .section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .eyebrow-dot {
+    width: 6px;
+    height: 6px;
+    background: #2563eb;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .eyebrow-text {
+    font-size: 11px;
+    font-weight: 700;
+    color: #2563eb;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .section-body {
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.8;
+  }
+
+  /* Stats grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .stat-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 26px;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-number span {
+    color: #2563eb;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  /* Compare table */
+  .compare-wrap {
+    margin: 20px 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .compare-table th {
+    background: #0a1628;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 12px 10px;
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+
+  .compare-table th.head-blue {
+    background: #2563eb;
+  }
+
+  .compare-table td {
+    padding: 12px 10px;
+    border-top: 1px solid #f1f5f9;
+    text-align: center;
+    color: #475569;
+    line-height: 1.5;
+  }
+
+  .compare-table td.row-label {
+    background: #f8fafc;
+    font-weight: 700;
+    color: #0f172a;
+    text-align: left;
+    width: 30%;
+  }
+
+  .compare-table td.cell-strong {
+    color: #2563eb;
+    font-weight: 700;
+  }
+
+  /* EDR 4단계 흐름 (4호 신규 컴포넌트) */
+  .flow-wrap {
+    margin: 22px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    position: relative;
+  }
+
+  .flow-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 50px;
+    width: 2px;
+    height: calc(100% - 30px);
+    background: linear-gradient(180deg, #2563eb 0%, #93c5fd 100%);
+  }
+
+  .flow-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: 1;
+    box-shadow: 0 0 0 4px #fff, 0 0 0 5px #e2e8f0;
+  }
+
+  .flow-content {
+    padding-top: 5px;
+    flex: 1;
+  }
+
+  .flow-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 4px;
+  }
+
+  .flow-desc {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  /* Point list */
+  .point-list {
+    list-style: none;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .point-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .point-num {
+    background: #0a1628;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .point-content strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 3px;
+  }
+
+  .point-content p {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  /* Quote block */
+  .quote-block {
+    background: #fafafa;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    position: relative;
+  }
+
+  .quote-mark {
+    font-size: 48px;
+    color: #dbeafe;
+    font-family: Georgia, serif;
+    line-height: 0.8;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .quote-text {
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .quote-source {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-top: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* BLUETNS insight */
+  .insight-box {
+    background: #0a1628;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin: 20px 0;
+  }
+
+  .insight-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #60a5fa;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .insight-label::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 2px;
+    background: #2563eb;
+  }
+
+  .insight-text {
+    font-size: 14px;
+    color: #cbd5e1;
+    line-height: 1.75;
+  }
+
+  .insight-text strong {
+    color: #fff;
+  }
+
+  /* Award box (4호 신규) */
+  .award-box {
+    background: linear-gradient(135deg, #1e3a5f 0%, #0a1628 100%);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin: 20px 0;
+    border: 1px solid #2563eb;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .award-box::before {
+    content: '🏆';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 80px;
+    opacity: 0.1;
+  }
+
+  .award-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: #fbbf24;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .award-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .award-desc {
+    font-size: 12px;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+
+  .award-desc strong {
+    color: #93c5fd;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 28px 36px;
+    text-align: center;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .cta-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 6px;
+  }
+
+  .cta-desc {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #2563eb;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+
+  /* Next issue */
+  .next-section {
+    padding: 20px 36px;
+    background: #fff;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .next-icon {
+    width: 36px;
+    height: 36px;
+    background: #eff6ff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+
+  .next-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .next-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #334155;
+  }
+
+  /* Footer */
+  .footer {
+    background: #0a1628;
+    border-radius: 0 0 16px 16px;
+    padding: 24px 36px;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .footer-logo {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .footer-addr {
+    font-size: 11px;
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  .footer-link {
+    font-size: 11px;
+    color: #64748b;
+    text-decoration: none;
+  }
+
+  .footer-bottom {
+    font-size: 11px;
+    color: #334155;
+    line-height: 1.6;
+  }
+
+  .unsubscribe {
+    color: #475569;
+    text-decoration: underline;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: #f1f5f9;
+    margin: 0 36px;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 480px) {
+    .wrapper { padding: 16px 8px; }
+    .header { padding: 20px 20px; border-radius: 12px 12px 0 0; }
+    .hero { padding: 32px 20px; }
+    .hero-title { font-size: 21px; }
+    .section { padding: 22px 20px; }
+    .stat-bar { margin: 0 20px; margin-top: 24px; }
+    .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .stat-number { font-size: 22px; }
+    .stat-label { font-size: 10px; }
+    .compare-table { font-size: 11px; }
+    .compare-table th, .compare-table td { padding: 9px 6px; }
+    .flow-step { padding: 12px 0; }
+    .cta-section { padding: 24px 20px; }
+    .next-section { padding: 16px 20px; }
+    .footer { padding: 20px 20px; border-radius: 0 0 12px 12px; }
+    .footer-top { flex-direction: column; gap: 12px; }
+    .issue-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-area">
+      <div class="logo-icon">B</div>
+      <div>
+        <div class="logo-text">블루레터</div>
+        <div class="logo-sub">by BLUETNS</div>
+      </div>
+    </div>
+    <div class="issue-badge">Vol.04 · 2026.06.23 (매월 2·4주 화요일 발행)</div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-tag">🛡 이번 호 주제 — 보안</div>
+    <h1 class="hero-title">
+      신·변종 랜섬웨어는<br>
+      <em>어떻게 막나</em>
+    </h1>
+    <p class="hero-desc">
+      안티바이러스는 '알려진 위협'을 막습니다.<br>
+      EDR은 '행위'를 봅니다 — 시그니처가 없는 공격까지요.
+    </p>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Stat bar -->
+    <div class="stat-bar" style="margin-top:32px;">
+      <div class="stat-bar-label">이번 호 핵심</div>
+      <div class="stat-bar-text">
+        새로 등장하는 랜섬웨어는 <strong>시그니처가 없습니다.</strong><br>
+        그래서 안티바이러스만으로는 절반밖에 못 막습니다.
+      </div>
+    </div>
+
+    <!-- Section 1: 이슈 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">이번 호 이슈</div>
+      </div>
+      <h2 class="section-title">안티바이러스가 놓치는 영역, EDR이 본다</h2>
+      <p class="section-body">
+        Verizon 2024 데이터 침해 조사 보고서에 따르면 전체 침해 사고의 약 1/3이 랜섬웨어와 협박 공격이며, 68% 이상은 인적 요인과 관련됐습니다. 더 큰 문제는 공격 방식입니다. 시그니처 없는 신·변종, 파일조차 남기지 않는 파일리스(Fileless), 정상 프로세스를 빌려 쓰는 LOLBin 공격이 늘면서 기존 안티바이러스가 잡지 못하는 영역이 빠르게 커지고 있습니다.
+      </p>
+
+      <div class="stats-grid" style="margin-top:20px;">
+        <div class="stat-card">
+          <div class="stat-number"><span>1/3</span></div>
+          <div class="stat-label">전체 침해 사고 중<br>랜섬웨어·협박</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number"><span>68</span>%</div>
+          <div class="stat-label">인적 요인 관련<br>침해 사고 비율</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number"><span>24</span>/7</div>
+          <div class="stat-label">EDR 실시간<br>엔드포인트 감시</div>
+        </div>
+      </div>
+
+      <p class="section-body" style="font-size:12px; color:#94a3b8;">※ 출처: Verizon 2024 Data Breach Investigations Report (DBIR)</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section 2: 비교 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">기술 비교</div>
+      </div>
+      <h2 class="section-title">안티바이러스 vs EDR — 무엇이 다른가</h2>
+
+      <p class="section-body" style="margin-bottom:8px;">
+        쉽게 말하면 안티바이러스는 "지명수배자 명단"으로 막는 방식이고, EDR은 "수상한 행동"을 보는 방식입니다.
+      </p>
+
+      <div class="compare-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>안티바이러스</th>
+              <th class="head-blue">EDR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="row-label">탐지 방식</td>
+              <td>시그니처(패턴) 기반</td>
+              <td class="cell-strong">행위(Behavior) 기반</td>
+            </tr>
+            <tr>
+              <td class="row-label">신·변종 대응</td>
+              <td>한계 있음</td>
+              <td class="cell-strong">실시간 탐지</td>
+            </tr>
+            <tr>
+              <td class="row-label">파일리스 공격</td>
+              <td>탐지 어려움</td>
+              <td class="cell-strong">정상 프로세스도 추적</td>
+            </tr>
+            <tr>
+              <td class="row-label">사고 추적</td>
+              <td>탐지 결과만 표시</td>
+              <td class="cell-strong">경로·확산까지 가시화</td>
+            </tr>
+            <tr>
+              <td class="row-label">자동 대응</td>
+              <td>차단·삭제</td>
+              <td class="cell-strong">차단 + 자동 롤백</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section 3: EDR 4단계 동작 흐름 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">EDR이 일하는 방식</div>
+      </div>
+      <h2 class="section-title">랜섬웨어가 들어왔을 때, EDR은 이렇게 본다</h2>
+
+      <div class="flow-wrap">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-content">
+            <div class="flow-title">감시 — 모든 엔드포인트 행위 기록</div>
+            <div class="flow-desc">PC·서버에서 발생하는 프로세스, 파일, 네트워크, 레지스트리 활동을 24시간 실시간으로 수집합니다.</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-content">
+            <div class="flow-title">탐지 — 이상 행위 자동 판별</div>
+            <div class="flow-desc">머신러닝과 MITRE ATT&CK 프레임워크로 정상과 비정상을 구분합니다. "파일 대량 암호화", "권한 상승" 등 행위 패턴을 즉시 감지합니다.</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-content">
+            <div class="flow-title">대응 — 프로세스 차단 + 격리</div>
+            <div class="flow-desc">위협 행위 중인 프로세스를 즉시 종료하고, 해당 엔드포인트를 네트워크에서 격리해 확산을 막습니다.</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-content">
+            <div class="flow-title">복원 — 변경 사항 자동 롤백</div>
+            <div class="flow-desc">랜섬웨어가 손댄 파일을 사고 전 상태로 자동 되돌립니다. 백업이 없어도 1차 복구가 가능합니다.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">백신은 탐지의 결과만 보여 주지만, EDR은 탐지된 파일이 어디서 왔는지, 어디와 통신했는지, 각 흐름과 이벤트를 모두 제공합니다.</p>
+        <div class="quote-source">— 글로벌 보안 분석 자료, EDR 정의</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section 4: AEC/제조업 도입 체크리스트 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">도입 전 체크</div>
+      </div>
+      <h2 class="section-title">AEC·제조업이 EDR 도입 전 점검할 3가지</h2>
+
+      <ul class="point-list">
+        <li class="point-item">
+          <div class="point-num">1</div>
+          <div class="point-content">
+            <strong>도면·설계·생산 데이터가 엔드포인트에 분산되어 있는가?</strong>
+            <p>AEC와 제조업은 CAD·BOM·도면 파일이 여러 PC와 워크스테이션에 흩어져 있는 게 일반적입니다. 엔드포인트 단위 보호가 절대적으로 중요합니다.</p>
+          </div>
+        </li>
+        <li class="point-item">
+          <div class="point-num">2</div>
+          <div class="point-content">
+            <strong>단일 에이전트인가, 별도 설치인가?</strong>
+            <p>안티바이러스와 EDR 에이전트를 따로 운영하면 성능 저하와 충돌이 생깁니다. 단일 에이전트로 통합된 솔루션이 운영 부담을 줄여줍니다.</p>
+          </div>
+        </li>
+        <li class="point-item">
+          <div class="point-num">3</div>
+          <div class="point-content">
+            <strong>전담 보안 인력 없이도 운영 가능한가?</strong>
+            <p>중견·중소기업 대부분은 보안 전담 인력이 없습니다. 자동 대응과 직관적인 콘솔, 또는 관리형 EDR(MEDR) 옵션 여부가 도입 성패를 가릅니다.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section 5: BLUETNS 인사이트 + 수상 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">블루티엔에스 시각</div>
+      </div>
+
+      <div class="award-box">
+        <div class="award-label">★ 2026 AV-COMPARATIVES 인증</div>
+        <div class="award-title">Bitdefender GravityZone, 14단계 공격 시나리오<br>100% 텔레메트리 확보 — 유일한 인증 제품</div>
+        <div class="award-desc">
+          AV-Comparatives의 EDR Detection Validation 인증 테스트에서, 실제 APT 공격 조직의 전술(스피어 피싱→계정 탈취→내부 이동→권한 상승→C2→도메인 컨트롤러 공격)을 그대로 구현한 <strong>14단계 시나리오 전 구간에서 100% 위협 추적 가시성</strong>을 기록한 유일한 제품으로 선정됐습니다.
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">BLUETNS INSIGHT</div>
+        <p class="insight-text">
+          12년 동안 AEC·제조업 IT 현장에서 가장 자주 들은 고민은 이것입니다.<br><br>
+          <strong>"보안 전담 인력이 없는데, EDR 운영이 가능할까?"</strong><br><br>
+          Bitdefender GravityZone은 AV-TEST 7년 연속 1위, AV-Comparatives 2026 인증의 검증된 탐지력에 더해, <strong>단일 에이전트·단일 콘솔·자동 롤백</strong>으로 전담 인력 없이도 운영할 수 있도록 설계됐습니다. 보안 인력 부담 없이 EDR을 도입할 수 있는 거의 유일한 선택지입니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <div class="cta-title">시그니처로 못 막는 위협, EDR로 막아야 합니다.</div>
+      <div class="cta-desc">Bitdefender GravityZone EDR 무료 체험을<br>지금 신청하세요.</div>
+      <a href="https://form.typeform.com/to/pdrGxY0X" class="cta-button" target="_blank" rel="noopener noreferrer">무료 상담 신청하기 →</a>
+    </div>
+
+    <!-- Next issue -->
+    <div class="next-section">
+      <div class="next-icon">📁</div>
+      <div>
+        <div class="next-label">다음 호 예고 · 7월 14일</div>
+        <div class="next-title">왜 PDF 보안이 문서 보안의 시작인가</div>
+      </div>
+    </div>
+
+    <!-- Archive button (4호 신규) -->
+    <div style="padding:24px 36px; background:#fff; border-top:1px solid #f1f5f9; text-align:center;">
+      <div style="font-size:12px; color:#94a3b8; font-weight:600; margin-bottom:10px; letter-spacing:1px; text-transform:uppercase;">📚 지난 호 모아보기</div>
+      <div style="font-size:13px; color:#475569; line-height:1.6; margin-bottom:16px;">
+        놓친 호가 있으신가요?<br>
+        Vol.01~04 전체를 한 곳에서 확인하실 수 있습니다.
+      </div>
+      <a href="https://bluetns.github.io/newsletter/" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#fff; color:#0a1628; font-size:13px; font-weight:700; padding:11px 24px; border-radius:8px; text-decoration:none; border:1.5px solid #0a1628; letter-spacing:0.3px;">전체 아카이브 보기 →</a>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">(주)블루티엔에스 BLUETNS</div>
+        <div class="footer-addr">
+          서울 서초구 강남대로 101길 43<br>
+          대표이사: 박인호 | Trust base is our pride
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="https://bluetns.co.kr/free" class="footer-link" target="_blank" rel="noopener noreferrer">홈페이지</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      블루레터는 매월 2·4주 화요일 오전 10시에 발행됩니다.<br>
+      본 메일은 블루티엔에스 뉴스레터 수신에 동의하신 분께 발송됩니다.<br>
+      수신을 원하지 않으시면 <a href="#" class="unsubscribe">여기</a>를 클릭해 주세요.
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
