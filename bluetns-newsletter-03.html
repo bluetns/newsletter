@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>블루레터 Vol.03 | 백업이 있어도 안전하지 않습니다 — 다층 방어 전략</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: #f0f2f5;
+    font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+    color: #1a1a2e;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 32px 16px;
+  }
+
+  /* Header */
+  .header {
+    background: #0a1628;
+    border-radius: 16px 16px 0 0;
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-icon {
+    width: 38px;
+    height: 38px;
+    background: #2563eb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -1px;
+  }
+
+  .logo-text {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .logo-sub {
+    color: #64748b;
+    font-size: 11px;
+    margin-top: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .issue-badge {
+    background: #1e3a5f;
+    color: #93c5fd;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(145deg, #0f2544 0%, #1a3a6b 100%);
+    padding: 44px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    background: rgba(37, 99, 235, 0.15);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -30px;
+    width: 160px;
+    height: 160px;
+    background: rgba(37, 99, 235, 0.08);
+    border-radius: 50%;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(37, 99, 235, 0.3);
+    color: #93c5fd;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid rgba(147, 197, 253, 0.2);
+  }
+
+  .hero-title {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title em {
+    color: #60a5fa;
+    font-style: normal;
+  }
+
+  .hero-desc {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Content area */
+  .content {
+    background: #ffffff;
+    padding: 0;
+  }
+
+  /* Key stat bar */
+  .stat-bar {
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+    padding: 16px 24px;
+    margin: 0 36px;
+    margin-top: 32px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .stat-bar-label {
+    font-size: 11px;
+    color: #2563eb;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .stat-bar-text {
+    font-size: 15px;
+    color: #1e3a5f;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  /* Section */
+  .section {
+    padding: 28px 36px;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .section:last-of-type {
+    border-bottom: none;
+  }
+
+  .section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .eyebrow-dot {
+    width: 6px;
+    height: 6px;
+    background: #2563eb;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .eyebrow-text {
+    font-size: 11px;
+    font-weight: 700;
+    color: #2563eb;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .section-body {
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.8;
+  }
+
+  /* Stats grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .stat-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 26px;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-number span {
+    color: #2563eb;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  /* Point list */
+  .point-list {
+    list-style: none;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .point-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .point-num {
+    background: #0a1628;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .point-content strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 3px;
+  }
+
+  .point-content p {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  /* Defense layer cards (3호 신규) */
+  .layer-wrap {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .layer-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .layer-card.primary {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-color: #93c5fd;
+  }
+
+  .layer-badge {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0.5px;
+  }
+
+  .layer-card.primary .layer-badge {
+    background: #0a1628;
+  }
+
+  .layer-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 4px;
+  }
+
+  .layer-desc {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  /* Quote block */
+  .quote-block {
+    background: #fafafa;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    position: relative;
+  }
+
+  .quote-mark {
+    font-size: 48px;
+    color: #dbeafe;
+    font-family: Georgia, serif;
+    line-height: 0.8;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .quote-text {
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .quote-source {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-top: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* BLUETNS insight */
+  .insight-box {
+    background: #0a1628;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin: 20px 0;
+  }
+
+  .insight-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #60a5fa;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .insight-label::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 2px;
+    background: #2563eb;
+  }
+
+  .insight-text {
+    font-size: 14px;
+    color: #cbd5e1;
+    line-height: 1.75;
+  }
+
+  .insight-text strong {
+    color: #fff;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 28px 36px;
+    text-align: center;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .cta-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 6px;
+  }
+
+  .cta-desc {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #2563eb;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+
+  /* Next issue */
+  .next-section {
+    padding: 20px 36px;
+    background: #fff;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .next-icon {
+    width: 36px;
+    height: 36px;
+    background: #eff6ff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+
+  .next-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .next-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #334155;
+  }
+
+  /* Footer */
+  .footer {
+    background: #0a1628;
+    border-radius: 0 0 16px 16px;
+    padding: 24px 36px;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .footer-logo {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .footer-addr {
+    font-size: 11px;
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  .footer-link {
+    font-size: 11px;
+    color: #64748b;
+    text-decoration: none;
+  }
+
+  .footer-bottom {
+    font-size: 11px;
+    color: #334155;
+    line-height: 1.6;
+  }
+
+  .unsubscribe {
+    color: #475569;
+    text-decoration: underline;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: #f1f5f9;
+    margin: 0 36px;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 480px) {
+    .wrapper { padding: 16px 8px; }
+    .header { padding: 20px 20px; border-radius: 12px 12px 0 0; }
+    .hero { padding: 32px 20px; }
+    .hero-title { font-size: 21px; }
+    .section { padding: 22px 20px; }
+    .stat-bar { margin: 0 20px; margin-top: 24px; }
+    .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .stat-number { font-size: 22px; }
+    .stat-label { font-size: 10px; }
+    .layer-card { padding: 14px; }
+    .cta-section { padding: 24px 20px; }
+    .next-section { padding: 16px 20px; }
+    .footer { padding: 20px 20px; border-radius: 0 0 12px 12px; }
+    .footer-top { flex-direction: column; gap: 12px; }
+    .issue-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-area">
+      <div class="logo-icon">B</div>
+      <div>
+        <div class="logo-text">블루레터</div>
+        <div class="logo-sub">by BLUETNS</div>
+      </div>
+    </div>
+    <div class="issue-badge">Vol.03 · 2026.06.09 (매월 2·4주 화요일 발행)</div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-tag">🔒 이번 호 주제 — 보안</div>
+    <h1 class="hero-title">
+      백업이 있어도<br>
+      <em>안전하지 않습니다</em>
+    </h1>
+    <p class="hero-desc">
+      몸값을 지불한 기업의 40%는 결국 데이터를 잃었습니다.<br>
+      백업도 함께 암호화되는 시대, 다층 방어가 답입니다.
+    </p>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Stat bar -->
+    <div class="stat-bar" style="margin-top:32px;">
+      <div class="stat-bar-label">이번 호 핵심</div>
+      <div class="stat-bar-text">
+        몸값 지불 기업 중 <strong>40%</strong>는 데이터 복구 실패 —<br>
+        <strong>80%</strong>는 1년 내 재공격 받았습니다.
+      </div>
+    </div>
+
+    <!-- Section 1: 이슈 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">이번 호 이슈</div>
+      </div>
+      <h2 class="section-title">백업만 있으면 안전하다는 착각</h2>
+      <p class="section-body">
+        2025년 상반기 KISA·과기정통부 집계 침해사고 건수는 1,034건으로 전년 동기 대비 15% 증가했습니다. 더 큰 문제는 대응 결과입니다. 히스콕스(Hiscox) 2025 보고서에 따르면 몸값을 지불한 기업의 40%가 결국 데이터를 잃었고, CrowdStrike 2025 보고서에서는 몸값 지불자의 93%가 데이터를 도난당했습니다. 백업이 있어도 함께 암호화되거나, 복호화 키를 받아도 데이터가 손상되는 경우가 빈번합니다.
+      </p>
+
+      <div class="stats-grid" style="margin-top:20px;">
+        <div class="stat-card">
+          <div class="stat-number"><span>40</span>%</div>
+          <div class="stat-label">몸값 지불 후에도<br>데이터 복구 실패</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number"><span>93</span>%</div>
+          <div class="stat-label">몸값 지불자 중<br>데이터 도난 피해</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number"><span>80</span>%</div>
+          <div class="stat-label">지불 기업 중<br>1년 내 재공격 피해</div>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">YES24가 2025년 6월 랜섬웨어 공격으로 약 5일간 전 서비스가 마비된 사건의 핵심 원인은 오프사이트 백업 체계의 부재였습니다. 백업의 위치와 방식이 곧 복구 가능성을 결정합니다.</p>
+        <div class="quote-source">— 2025년 상반기 사이버 위협 동향 보고서</div>
+      </div>
+
+      <p class="section-body">백업이 같은 네트워크 안에 있으면, 그 백업도 공격 대상이 됩니다. 다층 방어가 필요한 이유입니다.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section 2: 다층 방어 4계층 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">방어 전략</div>
+      </div>
+      <h2 class="section-title">다층 방어, 4계층으로 설계하세요</h2>
+
+      <p class="section-body" style="margin-bottom:8px;">
+        단일 보안 솔루션으로는 막을 수 없습니다. 각 층이 독립적으로 작동해야 하나가 뚫려도 나머지가 남습니다.
+      </p>
+
+      <div class="layer-wrap">
+        <div class="layer-card primary">
+          <div class="layer-badge">L1</div>
+          <div>
+            <div class="layer-title">엔드포인트 보호 (EDR/XDR)</div>
+            <div class="layer-desc">PC·서버에서 랜섬웨어를 실행 단계에서 차단. AI 기반 행위 분석으로 알려지지 않은 변종까지 탐지합니다.</div>
+          </div>
+        </div>
+        <div class="layer-card">
+          <div class="layer-badge">L2</div>
+          <div>
+            <div class="layer-title">이메일·웹 게이트웨이</div>
+            <div class="layer-desc">랜섬웨어의 90%는 이메일과 악성 링크로 유입됩니다. 진입 시점부터 차단해야 합니다.</div>
+          </div>
+        </div>
+        <div class="layer-card">
+          <div class="layer-badge">L3</div>
+          <div>
+            <div class="layer-title">3-2-1 백업 전략</div>
+            <div class="layer-desc">데이터 사본 3개 · 다른 매체 2종 · 1개는 반드시 오프사이트. 변경 불가(Immutable) 백업 추가 시 더 안전합니다.</div>
+          </div>
+        </div>
+        <div class="layer-card">
+          <div class="layer-badge">L4</div>
+          <div>
+            <div class="layer-title">권한 관리 + 직원 교육</div>
+            <div class="layer-desc">최소 권한 원칙과 정기 보안 교육으로 인적 취약점을 줄입니다. 기술이 아닌 사람이 가장 자주 뚫립니다.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section 3: AEC/제조업 실행 체크리스트 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">실행 체크리스트</div>
+      </div>
+      <h2 class="section-title">AEC·제조업 IT담당자가 지금 확인할 3가지</h2>
+
+      <ul class="point-list">
+        <li class="point-item">
+          <div class="point-num">1</div>
+          <div class="point-content">
+            <strong>도면·설계 파일 백업이 같은 네트워크에 있지 않은가?</strong>
+            <p>NAS·파일서버에 백업본을 두고 있다면 같이 암호화될 위험이 있습니다. 오프사이트(클라우드·외부 매체) 사본을 반드시 분리해서 보관해야 합니다.</p>
+          </div>
+        </li>
+        <li class="point-item">
+          <div class="point-num">2</div>
+          <div class="point-content">
+            <strong>엔드포인트에 행위 기반 보안 솔루션이 있는가?</strong>
+            <p>시그니처 기반 백신만으로는 부족합니다. 신·변종 랜섬웨어는 행위(파일 대량 암호화·확장자 변경 등)를 탐지하는 EDR/XDR이 있어야 막을 수 있습니다.</p>
+          </div>
+        </li>
+        <li class="point-item">
+          <div class="point-num">3</div>
+          <div class="point-content">
+            <strong>복구 훈련을 마지막으로 한 게 언제인가?</strong>
+            <p>백업이 있어도 복구 절차가 검증되지 않으면 사고 시점에 작동하지 않습니다. 분기 1회 이상 실제 복구 테스트가 필요합니다.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section 4: BLUETNS 인사이트 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">블루티엔에스 시각</div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">BLUETNS INSIGHT</div>
+        <p class="insight-text">
+          많은 AEC·제조업 IT담당자들이 "백업 있으니 괜찮다"고 말씀하십니다. 하지만 통계는 다릅니다.<br><br>
+          <strong>"백업의 유무가 아니라, 백업이 살아남느냐가 관건입니다."</strong><br><br>
+          Bitdefender GravityZone은 엔드포인트에서 랜섬웨어를 실행 전에 차단하는 동시에, 변조된 파일을 자동 롤백하는 안티-랜섬웨어 기능을 제공합니다. 다층 방어 중 첫 번째 층을 가장 단단하게 만드는 솔루션입니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <div class="cta-title">우리 회사의 다층 방어, 지금 어디가 비어 있나요?</div>
+      <div class="cta-desc">블루티엔에스 보안 전문가와 함께<br>현재 방어 체계를 무료로 진단받으세요.</div>
+      <a href="https://form.typeform.com/to/pdrGxY0X" class="cta-button" target="_blank" rel="noopener noreferrer">무료 상담 신청하기 →</a>
+    </div>
+
+    <!-- Next issue -->
+    <div class="next-section">
+      <div class="next-icon">🛡</div>
+      <div>
+        <div class="next-label">다음 호 예고 · 6월 23일</div>
+        <div class="next-title">신·변종 랜섬웨어는 어떻게 막나 — EDR이 보는 세계</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">(주)블루티엔에스 BLUETNS</div>
+        <div class="footer-addr">
+          서울 서초구 강남대로 101길 43<br>
+          대표이사: 박인호 | Trust base is our pride
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="https://bluetns.co.kr/free" class="footer-link" target="_blank" rel="noopener noreferrer">홈페이지</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      블루레터는 매월 2·4주 화요일 오전 10시에 발행됩니다.<br>
+      본 메일은 블루티엔에스 뉴스레터 수신에 동의하신 분께 발송됩니다.<br>
+      수신을 원하지 않으시면 <a href="#" class="unsubscribe">여기</a>를 클릭해 주세요.
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
