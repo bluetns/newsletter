@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>블루레터 아카이브 | by BLUETNS — 전체 발행 호 모아보기</title>
+<meta name="description" content="블루티엔에스의 격주 뉴스레터 '블루레터' 전체 발행 호를 모아 보실 수 있습니다. CAD·보안·생산성 인사이트를 한 곳에서 확인하세요.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: #f0f2f5;
+    font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+    color: #1a1a2e;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 32px 16px;
+  }
+
+  /* Header */
+  .header {
+    background: #0a1628;
+    border-radius: 16px 16px 0 0;
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-icon {
+    width: 38px;
+    height: 38px;
+    background: #2563eb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -1px;
+  }
+
+  .logo-text {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .logo-sub {
+    color: #64748b;
+    font-size: 11px;
+    margin-top: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .nav-badge {
+    background: #1e3a5f;
+    color: #93c5fd;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(145deg, #0f2544 0%, #1a3a6b 100%);
+    padding: 50px 36px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    background: rgba(37, 99, 235, 0.15);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -30px;
+    width: 160px;
+    height: 160px;
+    background: rgba(37, 99, 235, 0.08);
+    border-radius: 50%;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(37, 99, 235, 0.3);
+    color: #93c5fd;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid rgba(147, 197, 253, 0.2);
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title em {
+    color: #60a5fa;
+    font-style: normal;
+  }
+
+  .hero-desc {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Content area */
+  .content {
+    background: #ffffff;
+    padding: 36px;
+  }
+
+  /* Stats */
+  .stats-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .stat-mini {
+    flex: 1;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+
+  .stat-mini-num {
+    font-size: 24px;
+    font-weight: 900;
+    color: #2563eb;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-mini-label {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 600;
+  }
+
+  /* Section title */
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #0a1628;
+  }
+
+  .section-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-title::before {
+    content: '';
+    width: 4px;
+    height: 16px;
+    background: #2563eb;
+    border-radius: 2px;
+  }
+
+  .section-count {
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 600;
+  }
+
+  /* Issue list */
+  .issue-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .issue-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px 22px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+
+  .issue-card:hover {
+    border-color: #2563eb;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.12);
+    transform: translateY(-2px);
+  }
+
+  .issue-card.latest {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-color: #93c5fd;
+  }
+
+  .issue-card.latest::before {
+    content: 'LATEST';
+    position: absolute;
+    top: -8px;
+    right: 16px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+  }
+
+  .issue-vol {
+    background: #0a1628;
+    color: #fff;
+    border-radius: 10px;
+    padding: 12px 14px;
+    text-align: center;
+    flex-shrink: 0;
+    min-width: 68px;
+  }
+
+  .issue-card.latest .issue-vol {
+    background: #2563eb;
+  }
+
+  .issue-vol-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  .issue-card.latest .issue-vol-label {
+    color: #bfdbfe;
+  }
+
+  .issue-vol-num {
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .issue-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .issue-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+
+  .issue-date {
+    font-size: 11px;
+    color: #94a3b8;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  .topic-tag {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .topic-tag.security {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  .topic-tag.cad {
+    background: #dbeafe;
+    color: #1e40af;
+  }
+
+  .topic-tag.pdf {
+    background: #fce7f3;
+    color: #9f1239;
+  }
+
+  .issue-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+
+  .issue-summary {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  .issue-arrow {
+    color: #94a3b8;
+    font-size: 18px;
+    flex-shrink: 0;
+    align-self: center;
+    transition: all 0.2s;
+  }
+
+  .issue-card:hover .issue-arrow {
+    color: #2563eb;
+    transform: translateX(4px);
+  }
+
+  /* Coming soon */
+  .coming-soon {
+    background: #fafafa;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 18px 22px;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-top: 14px;
+  }
+
+  .coming-soon strong {
+    color: #475569;
+  }
+
+  /* CTA */
+  .cta-box {
+    background: #0a1628;
+    border-radius: 12px;
+    padding: 26px 28px;
+    margin: 32px 0 0;
+    text-align: center;
+  }
+
+  .cta-box-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .cta-box-desc {
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #2563eb;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 13px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+
+  /* Footer */
+  .footer {
+    background: #0a1628;
+    border-radius: 0 0 16px 16px;
+    padding: 24px 36px;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .footer-logo {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .footer-addr {
+    font-size: 11px;
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  .footer-link {
+    font-size: 11px;
+    color: #64748b;
+    text-decoration: none;
+  }
+
+  .footer-bottom {
+    font-size: 11px;
+    color: #334155;
+    line-height: 1.6;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 480px) {
+    .wrapper { padding: 16px 8px; }
+    .header { padding: 20px 20px; border-radius: 12px 12px 0 0; }
+    .hero { padding: 36px 20px; }
+    .hero-title { font-size: 23px; }
+    .content { padding: 24px 20px; }
+    .stats-row { gap: 8px; }
+    .stat-mini { padding: 14px 8px; }
+    .stat-mini-num { font-size: 20px; }
+    .stat-mini-label { font-size: 10px; }
+    .issue-card { padding: 16px; gap: 12px; flex-wrap: wrap; }
+    .issue-vol { min-width: 56px; padding: 10px 12px; }
+    .issue-vol-num { font-size: 17px; }
+    .issue-title { font-size: 13px; }
+    .issue-summary { font-size: 11px; }
+    .issue-arrow { display: none; }
+    .cta-box { padding: 22px 20px; }
+    .footer { padding: 20px 20px; border-radius: 0 0 12px 12px; }
+    .footer-top { flex-direction: column; gap: 12px; }
+    .nav-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-area">
+      <div class="logo-icon">B</div>
+      <div>
+        <div class="logo-text">블루레터</div>
+        <div class="logo-sub">by BLUETNS</div>
+      </div>
+    </div>
+    <div class="nav-badge">📚 아카이브</div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-tag">📬 격주 화요일 발행</div>
+    <h1 class="hero-title">
+      블루레터<br>
+      <em>전체 아카이브</em>
+    </h1>
+    <p class="hero-desc">
+      AEC·제조업 IT담당자를 위한 CAD·보안·생산성 인사이트.<br>
+      매월 2·4주 화요일 오전 10시에 만나뵙습니다.
+    </p>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-mini">
+        <div class="stat-mini-num">04</div>
+        <div class="stat-mini-label">총 발행 호</div>
+      </div>
+      <div class="stat-mini">
+        <div class="stat-mini-num">2주</div>
+        <div class="stat-mini-label">발행 주기</div>
+      </div>
+      <div class="stat-mini">
+        <div class="stat-mini-num">48K+</div>
+        <div class="stat-mini-label">구독 독자</div>
+      </div>
+    </div>
+
+    <!-- Issue list -->
+    <div class="section-head">
+      <div class="section-title">전체 발행 호</div>
+      <div class="section-count">최신순 정렬</div>
+    </div>
+
+    <div class="issue-list">
+
+      <!-- Vol.04 (최신) -->
+      <a href="bluetns-newsletter-04.html" class="issue-card latest" target="_blank" rel="noopener noreferrer">
+        <div class="issue-vol">
+          <div class="issue-vol-label">VOL</div>
+          <div class="issue-vol-num">04</div>
+        </div>
+        <div class="issue-body">
+          <div class="issue-meta">
+            <span class="issue-date">2026.06.23</span>
+            <span class="topic-tag security">🛡 보안</span>
+          </div>
+          <div class="issue-title">신·변종 랜섬웨어는 어떻게 막나 — EDR이 보는 세계</div>
+          <div class="issue-summary">안티바이러스는 '알려진 위협'만 막습니다. EDR은 행위를 봅니다. Bitdefender의 2026 AV-Comparatives 14단계 100% 텔레메트리 인증까지.</div>
+        </div>
+        <div class="issue-arrow">→</div>
+      </a>
+
+      <!-- Vol.03 -->
+      <a href="bluetns-newsletter-03.html" class="issue-card" target="_blank" rel="noopener noreferrer">
+        <div class="issue-vol">
+          <div class="issue-vol-label">VOL</div>
+          <div class="issue-vol-num">03</div>
+        </div>
+        <div class="issue-body">
+          <div class="issue-meta">
+            <span class="issue-date">2026.06.09</span>
+            <span class="topic-tag security">🔒 보안</span>
+          </div>
+          <div class="issue-title">백업이 있어도 안전하지 않습니다 — 다층 방어 전략</div>
+          <div class="issue-summary">몸값 지불한 기업의 40%가 데이터를 잃었습니다. 4계층 다층 방어와 3-2-1 백업 규칙으로 백업까지 지키는 법.</div>
+        </div>
+        <div class="issue-arrow">→</div>
+      </a>
+
+      <!-- Vol.02 -->
+      <a href="bluetns-newsletter-02.html" class="issue-card" target="_blank" rel="noopener noreferrer">
+        <div class="issue-vol">
+          <div class="issue-vol-label">VOL</div>
+          <div class="issue-vol-num">02</div>
+        </div>
+        <div class="issue-body">
+          <div class="issue-meta">
+            <span class="issue-date">2026.05.26</span>
+            <span class="topic-tag cad">📐 CAD</span>
+          </div>
+          <div class="issue-title">ZWCAD vs 오토캐드 — 가격만 다른 게 아닙니다</div>
+          <div class="issue-summary">AutoCAD 5년 약 1,290만 원, ZWCAD 영구 라이선스 약 218만 원. 비용 외 라이선스 구조·LISP 호환·단속 리스크까지 비교.</div>
+        </div>
+        <div class="issue-arrow">→</div>
+      </a>
+
+      <!-- Vol.01 -->
+      <a href="bluetns-newsletter-01.html" class="issue-card" target="_blank" rel="noopener noreferrer">
+        <div class="issue-vol">
+          <div class="issue-vol-label">VOL</div>
+          <div class="issue-vol-num">01</div>
+        </div>
+        <div class="issue-body">
+          <div class="issue-meta">
+            <span class="issue-date">2026.05.12</span>
+            <span class="topic-tag security">🔒 보안</span>
+          </div>
+          <div class="issue-title">도면 파일이 하루아침에 사라진다면?</div>
+          <div class="issue-summary">랜섬웨어 피해의 93%는 중소·중견기업. 2025년 국내 공격 40.5% 급증. AEC·제조업 CAD 자산을 지키는 첫 번째 호.</div>
+        </div>
+        <div class="issue-arrow">→</div>
+      </a>
+
+    </div>
+
+    <!-- Coming soon -->
+    <div class="coming-soon">
+      <strong>📁 Vol.05 예고 · 2026.07.14 발행 예정</strong><br>
+      왜 PDF 보안이 문서 보안의 시작인가
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <div class="cta-box-title">CAD·보안·생산성, 한 번에 점검하세요</div>
+      <div class="cta-box-desc">
+        12년 경력의 블루티엔에스 전문가가<br>
+        무료로 현황을 진단해드립니다.
+      </div>
+      <a href="https://form.typeform.com/to/pdrGxY0X" class="cta-button" target="_blank" rel="noopener noreferrer">무료 상담 신청하기 →</a>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">(주)블루티엔에스 BLUETNS</div>
+        <div class="footer-addr">
+          서울 서초구 강남대로 101길 43<br>
+          대표이사: 박인호 | Trust base is our pride
+        </div>
+      </div>
+      <a href="https://bluetns.co.kr/free" class="footer-link" target="_blank" rel="noopener noreferrer">홈페이지 →</a>
+    </div>
+    <div class="footer-bottom">
+      블루레터는 매월 2·4주 화요일 오전 10시에 발행됩니다.<br>
+      구독 신청·문의: <a href="https://bluetns.co.kr/free" style="color:#64748b;" target="_blank" rel="noopener noreferrer">bluetns.co.kr</a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
