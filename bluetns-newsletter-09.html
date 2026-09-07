@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>블루레터 Vol.09 | AI CAD 시대, ZYXCAD AX가 보여주는 방향</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: #f0f2f5;
+    font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+    color: #1a1a2e;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 32px 16px;
+  }
+
+  /* Header */
+  .header {
+    background: #0a1628;
+    border-radius: 16px 16px 0 0;
+    padding: 28px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-icon {
+    width: 38px;
+    height: 38px;
+    background: #2563eb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -1px;
+  }
+
+  .logo-text {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .logo-sub {
+    color: #64748b;
+    font-size: 11px;
+    margin-top: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .issue-badge {
+    background: #1e3a5f;
+    color: #93c5fd;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(145deg, #0f2544 0%, #1a3a6b 100%);
+    padding: 44px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    background: rgba(37, 99, 235, 0.15);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -30px;
+    width: 160px;
+    height: 160px;
+    background: rgba(37, 99, 235, 0.08);
+    border-radius: 50%;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(37, 99, 235, 0.3);
+    color: #93c5fd;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: 1px solid rgba(147, 197, 253, 0.2);
+  }
+
+  .hero-title {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title em {
+    color: #60a5fa;
+    font-style: normal;
+  }
+
+  .hero-desc {
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Content area */
+  .content {
+    background: #ffffff;
+    padding: 0;
+  }
+
+  /* Company news banner (9호 신규 - 자사 뉴스 강조) */
+  .news-banner {
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border: 1px solid #6ee7b7;
+    padding: 14px 24px;
+    margin: 0 36px;
+    margin-top: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .news-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .news-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #065f46;
+  }
+
+  .news-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: #064e3b;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  /* Key stat bar */
+  .stat-bar {
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+    padding: 16px 24px;
+    margin: 0 36px;
+    margin-top: 20px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .stat-bar-label {
+    font-size: 11px;
+    color: #2563eb;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .stat-bar-text {
+    font-size: 15px;
+    color: #1e3a5f;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  /* Section */
+  .section {
+    padding: 28px 36px;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .section:last-of-type {
+    border-bottom: none;
+  }
+
+  .section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .eyebrow-dot {
+    width: 6px;
+    height: 6px;
+    background: #2563eb;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .eyebrow-text {
+    font-size: 11px;
+    font-weight: 700;
+    color: #2563eb;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .section-title {
+    font-size: 19px;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .section-body {
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.8;
+  }
+
+  /* Stats grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .stat-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 26px;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-number span {
+    color: #2563eb;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  /* News card (9호 신규 - ZDNet 기사 카드) */
+  .news-card {
+    margin: 22px 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .news-card-header {
+    background: #0a1628;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .news-card-source {
+    background: #2563eb;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .news-card-date {
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .news-card-body {
+    padding: 20px 22px;
+  }
+
+  .news-card-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.45;
+    margin-bottom: 10px;
+  }
+
+  .news-card-summary {
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  .news-card-facts {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+
+  .news-fact-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 12px;
+    border-bottom: 1px solid #eef1f4;
+  }
+
+  .news-fact-row:last-child {
+    border-bottom: none;
+  }
+
+  .news-fact-label {
+    color: #94a3b8;
+    font-weight: 600;
+  }
+
+  .news-fact-value {
+    color: #0f172a;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .news-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #2563eb;
+    text-decoration: none;
+  }
+
+  .news-card-link:hover {
+    text-decoration: underline;
+  }
+
+  /* AI feature grid (9호 신규) */
+  .ai-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .ai-feature-item {
+    background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+    border: 1px solid #d8b4fe;
+    border-radius: 12px;
+    padding: 16px 14px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .ai-feature-icon {
+    width: 32px;
+    height: 32px;
+    background: #9333ea;
+    color: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .ai-feature-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: #6b21a8;
+    margin-bottom: 3px;
+    line-height: 1.3;
+  }
+
+  .ai-feature-desc {
+    font-size: 11px;
+    color: #581c87;
+    line-height: 1.5;
+  }
+
+  /* Industry tags (9호 신규) */
+  .industry-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0;
+  }
+
+  .industry-tag {
+    background: #0a1628;
+    color: #93c5fd;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* Point list */
+  .point-list {
+    list-style: none;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .point-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .point-num {
+    background: #0a1628;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .point-content strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 4px;
+  }
+
+  .point-content p {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.65;
+  }
+
+  /* Quote block */
+  .quote-block {
+    background: #fafafa;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    position: relative;
+  }
+
+  .quote-mark {
+    font-size: 48px;
+    color: #dbeafe;
+    font-family: Georgia, serif;
+    line-height: 0.8;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .quote-text {
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .quote-source {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-top: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* BLUETNS insight */
+  .insight-box {
+    background: #0a1628;
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin: 20px 0;
+  }
+
+  .insight-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #60a5fa;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .insight-label::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 2px;
+    background: #2563eb;
+  }
+
+  .insight-text {
+    font-size: 14px;
+    color: #cbd5e1;
+    line-height: 1.75;
+  }
+
+  .insight-text strong {
+    color: #fff;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 28px 36px;
+    text-align: center;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .cta-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 6px;
+  }
+
+  .cta-desc {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #2563eb;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+
+  /* Next issue */
+  .next-section {
+    padding: 20px 36px;
+    background: #fff;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .next-icon {
+    width: 36px;
+    height: 36px;
+    background: #eff6ff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+
+  .next-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .next-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #334155;
+  }
+
+  /* Footer */
+  .footer {
+    background: #0a1628;
+    border-radius: 0 0 16px 16px;
+    padding: 24px 36px;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .footer-logo {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .footer-addr {
+    font-size: 11px;
+    color: #475569;
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  .footer-link {
+    font-size: 11px;
+    color: #64748b;
+    text-decoration: none;
+  }
+
+  .footer-bottom {
+    font-size: 11px;
+    color: #334155;
+    line-height: 1.6;
+  }
+
+  .unsubscribe {
+    color: #475569;
+    text-decoration: underline;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: #f1f5f9;
+    margin: 0 36px;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 480px) {
+    .wrapper { padding: 16px 8px; }
+    .header { padding: 20px 20px; border-radius: 12px 12px 0 0; }
+    .hero { padding: 32px 20px; }
+    .hero-title { font-size: 21px; }
+    .section { padding: 22px 20px; }
+    .stat-bar { margin: 0 20px; margin-top: 20px; }
+    .news-banner { margin: 0 20px; margin-top: 20px; padding: 10px 14px; }
+    .news-text { font-size: 11px; }
+    .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .stat-number { font-size: 22px; }
+    .stat-label { font-size: 10px; }
+    .ai-feature-grid { grid-template-columns: 1fr; }
+    .news-card-body { padding: 16px 18px; }
+    .news-card-title { font-size: 14px; }
+    .industry-tag { font-size: 11px; padding: 7px 12px; }
+    .cta-section { padding: 24px 20px; }
+    .next-section { padding: 16px 20px; }
+    .footer { padding: 20px 20px; border-radius: 0 0 12px 12px; }
+    .footer-top { flex-direction: column; gap: 12px; }
+    .issue-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-area">
+      <div class="logo-icon">B</div>
+      <div>
+        <div class="logo-text">블루레터</div>
+        <div class="logo-sub">by BLUETNS</div>
+      </div>
+    </div>
+    <div class="issue-badge">Vol.09 · 2026.09.08 (매월 2·4주 화요일 발행)</div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-tag">🤖 이번 호 주제 — AI CAD</div>
+    <h1 class="hero-title">
+      AI CAD 시대,<br>
+      <em>ZYXCAD AX가 보여주는 방향</em>
+    </h1>
+    <p class="hero-desc">
+      AutoCAD도, SolidWorks도 이제 AI를 이야기합니다.<br>
+      국산 CAD는 이미 520여 개의 AI 기능으로 그 흐름의 최전선에 있습니다.
+    </p>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Company news banner -->
+    <div class="news-banner">
+      <div class="news-icon">🎉</div>
+      <div class="news-label">COMPANY NEWS</div>
+      <div class="news-text">블루티엔에스, 직스테크놀로지와 'ZYXCAD AX' EA 총판 계약 체결</div>
+    </div>
+
+    <!-- Stat bar -->
+    <div class="stat-bar">
+      <div class="stat-bar-label">이번 호 핵심</div>
+      <div class="stat-bar-text">
+        글로벌 CAD가 앞다퉈 AI 기능을 얹는 지금,<br>
+        ZYXCAD AX는 <strong>520여 개 AI 기능</strong>을 이미 갖추고 있었습니다.
+      </div>
+    </div>
+
+    <!-- Section 1: AI CAD 트렌드 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">이번 호 이슈</div>
+      </div>
+      <h2 class="section-title">CAD 업계 전체가 AI로 방향을 튼 2026년</h2>
+      <p class="section-body">
+        올해 출시된 주요 CAD 소프트웨어를 보면 공통점이 하나 있습니다. AutoCAD 2026은 반복 객체를 자동으로 블록화하는 AI 기능을 정식 도입했고, SolidWorks 2026은 체결부품을 AI가 자동 인식·조립하는 기능을 새로 얹었습니다. 국산 CAD 업계도 마찬가지입니다. 캐디안은 스마트 치수 자동화를 앞세운 CADian 2026을 출시했습니다.
+      </p>
+      <p class="section-body" style="margin-top:12px;">
+        업계 전체가 "AI 기능을 추가하는 중"인 지금, ZYXCAD AX는 이미 몇 걸음 앞서 있습니다. 이름 자체가 AX(AI Transformation)를 표방하며, 설계 반복 작업 전체를 AI로 자동화하는 방향을 처음부터 제품의 정체성으로 삼았기 때문입니다.
+      </p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number"><span>520</span>여개</div>
+          <div class="stat-label">ZYXCAD AX<br>AI 자동화 기능</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number"><span>50</span>%</div>
+          <div class="stat-label">직스테크놀로지<br>CAD 시장 점유 목표</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number"><span>2027</span></div>
+          <div class="stat-label">CES 참가 예정<br>(美 라스베이거스)</div>
+        </div>
+      </div>
+
+      <p class="section-body" style="font-size:12px; color:#94a3b8;">※ 출처: 매일경제, ZDNet 코리아, 캐드앤그래픽스, 각 사 공식 발표</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section 2: ZDNet 뉴스 카드 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">계약 체결 소식</div>
+      </div>
+      <h2 class="section-title">블루티엔에스, ZYXCAD AX EA 총판 계약 체결</h2>
+
+      <p class="section-body" style="margin-bottom:6px;">
+        지난 8월, 블루티엔에스가 직스테크놀로지와 ZYXCAD AX의 EA(Enterprise Agreement) 총판 계약을 체결했다는 소식이 ZDNet 코리아에 보도됐습니다.
+      </p>
+
+      <div class="news-card">
+        <div class="news-card-header">
+          <div class="news-card-source">ZDNet Korea</div>
+          <div class="news-card-date">2026.08.28 보도</div>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-title">직스테크놀로지, 블루티엔에스와 'ZYXCAD AX' EA 총판 계약</div>
+          <div class="news-card-summary">
+            직스테크놀로지(대표 최종복)가 블루티엔에스(대표 박인호)와 AI CAD 'ZYXCAD AX'의 기업용 사이트 라이선스(EA) 총판 계약을 체결했다고 밝혔다. 로봇·방산·제조·건축·건설 산업을 대상으로 AI 기반 설계 자동화 확산에 나선다는 계획이다.
+          </div>
+          <div class="news-card-facts">
+            <div class="news-fact-row">
+              <div class="news-fact-label">계약 형태</div>
+              <div class="news-fact-value">EA (Enterprise Agreement)</div>
+            </div>
+            <div class="news-fact-row">
+              <div class="news-fact-label">계약 기간</div>
+              <div class="news-fact-value">3년, 연 단위 분할 납부</div>
+            </div>
+            <div class="news-fact-row">
+              <div class="news-fact-label">혜택</div>
+              <div class="news-fact-value">계약 수량별 추가 라이선스</div>
+            </div>
+            <div class="news-fact-row">
+              <div class="news-fact-label">타겟 산업</div>
+              <div class="news-fact-value">로봇·방산·제조·건축·건설</div>
+            </div>
+          </div>
+          <a href="https://zdnet.co.kr/view/?no=20260827180515" class="news-card-link" target="_blank" rel="noopener noreferrer">
+            ZDNet 코리아 원문 보기 →
+          </a>
+        </div>
+      </div>
+
+      <p class="section-body">
+        EA는 개별 사용자 라이선스가 아니라 전사 사이트 단위로 계약하는 방식입니다. 사용 인원이 늘어나도 매번 개별 구매할 필요 없이, 계약 범위 안에서 유연하게 배포할 수 있습니다. 3년 계약을 연 단위로 분할 납부할 수 있어 초기 예산 부담도 줄어듭니다.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section 3: AI 기능 5가지 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">ZYXCAD AX의 AI 기능</div>
+      </div>
+      <h2 class="section-title">520여 개 중 실무자가 가장 먼저 체감하는 5가지</h2>
+
+      <div class="ai-feature-grid">
+        <div class="ai-feature-item">
+          <div class="ai-feature-icon">🖼️</div>
+          <div>
+            <div class="ai-feature-title">이미지 자동 벡터화</div>
+            <div class="ai-feature-desc">스캔 도면·이미지를 AI가 자동으로 편집 가능한 벡터 도면으로 변환</div>
+          </div>
+        </div>
+        <div class="ai-feature-item">
+          <div class="ai-feature-icon">📐</div>
+          <div>
+            <div class="ai-feature-title">감리 작업 보조</div>
+            <div class="ai-feature-desc">기존엔 사람이 일일이 확인하던 도면 검토를 AI가 1차 보조</div>
+          </div>
+        </div>
+        <div class="ai-feature-item">
+          <div class="ai-feature-icon">⚡</div>
+          <div>
+            <div class="ai-feature-title">멀티 CPU 고속 처리</div>
+            <div class="ai-feature-desc">대용량 도면도 여러 CPU 코어로 분산 처리해 속도 저하 방지</div>
+          </div>
+        </div>
+        <div class="ai-feature-item">
+          <div class="ai-feature-icon">🔗</div>
+          <div>
+            <div class="ai-feature-title">BIM·3D 파일 호환</div>
+            <div class="ai-feature-desc">IFC·STEP 등 표준 포맷 지원으로 타 설계 도구와 협업 원활</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">기존엔 사람이 일일이 확인해야 했던 감리 작업 보조가 대표적이다. 미국 소비자가전 전시회(CES) 2027에 참가해 ZYXCAD AX와 AI 공간 설계 플랫폼 ZYX Space를 선보일 계획이다.</p>
+        <div class="quote-source">— 최종복 직스테크놀로지 대표, 매일경제 인터뷰</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section 4: 타겟 산업 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">타겟 산업</div>
+      </div>
+      <h2 class="section-title">이번 EA 계약이 겨냥하는 5개 산업</h2>
+
+      <p class="section-body" style="margin-bottom:10px;">
+        이번 계약에서 특히 눈에 띄는 건 타겟 산업입니다. 전통적인 건축·건설을 넘어 로봇과 방산까지 포함됐습니다.
+      </p>
+
+      <div class="industry-row">
+        <div class="industry-tag">🤖 로봇</div>
+        <div class="industry-tag">🛡 방산</div>
+        <div class="industry-tag">🏭 제조</div>
+        <div class="industry-tag">🏢 건축</div>
+        <div class="industry-tag">🏗 건설</div>
+      </div>
+
+      <p class="section-body">
+        이미 삼성물산·한화오션 등 국내 대기업들도 직스캐드 도입에 나선 것으로 알려졌습니다. 국산 CAD가 "저렴한 대안"을 넘어 "대기업이 선택하는 검증된 CAD"로 자리잡고 있다는 의미입니다.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section 5: 실무 시사점 -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">실무 시사점</div>
+      </div>
+      <h2 class="section-title">우리 회사가 EA 계약으로 얻는 것</h2>
+
+      <ul class="point-list">
+        <li class="point-item">
+          <div class="point-num">1</div>
+          <div class="point-content">
+            <strong>전사 단위 사이트 라이선스로 배포 부담 축소</strong>
+            <p>부서별·인원별로 따로 구매하지 않고, 계약 범위 안에서 필요한 만큼 유연하게 배포할 수 있습니다. 신규 입사자나 프로젝트 확장 시에도 대응이 빠릅니다.</p>
+          </div>
+        </li>
+        <li class="point-item">
+          <div class="point-num">2</div>
+          <div class="point-content">
+            <strong>3년 분할 납부로 예산 부담 분산</strong>
+            <p>한 번에 큰 금액을 지출하지 않고 연 단위로 나눠 납부할 수 있어, 연간 IT 예산 계획에 반영하기 수월합니다.</p>
+          </div>
+        </li>
+        <li class="point-item">
+          <div class="point-num">3</div>
+          <div class="point-content">
+            <strong>계약 수량이 클수록 추가 혜택</strong>
+            <p>대규모 도입을 계획 중인 조직이라면 계약 수량에 따른 추가 라이선스 혜택을 받을 수 있어, 단위당 비용 효율이 더 높아집니다.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Section 6: BLUETNS INSIGHT -->
+    <div class="section">
+      <div class="section-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">블루티엔에스 시각</div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">BLUETNS INSIGHT</div>
+        <p class="insight-text">
+          지난 7호에서 "국산 CAD, 왜 지금 다시 봐야 하나"라는 질문을 던졌습니다. 이번 호는 그 답이 한 단계 더 진전됐다는 소식입니다.<br><br>
+          <strong>"이제 국산이냐 외산이냐의 문제가 아니라, AI를 실제로 쓸 수 있느냐의 문제입니다."</strong><br><br>
+          블루티엔에스는 이번 EA 총판 계약으로 ZYXCAD AX를 전사 단위로 도입하려는 기업에 <strong>더 유연한 라이선스 구조와 15년 AEC 총판 경험을 결합한 기술 지원</strong>을 제공할 수 있게 됐습니다. AI CAD 도입을 검토 중이시라면, 지금이 그 대화를 시작할 좋은 시점입니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <div class="cta-title">ZYXCAD AX EA 도입, 지금 상담받아 보세요.</div>
+      <div class="cta-desc">전사 규모·예산에 맞는 라이선스 구성을<br>블루티엔에스에서 무료로 설계해 드립니다.</div>
+      <a href="https://tally.so/r/1AxZZO" class="cta-button" target="_blank" rel="noopener noreferrer">무료 상담 신청하기 →</a>
+    </div>
+
+    <!-- Next issue -->
+    <div class="next-section">
+      <div class="next-icon">🛡</div>
+      <div>
+        <div class="next-label">다음 호 예고 · 9월 22일</div>
+        <div class="next-title">AI가 만든 사이버 공격, 방어는 어떻게 달라져야 하나</div>
+      </div>
+    </div>
+
+    <!-- Archive button -->
+    <div style="padding:24px 36px; background:#fff; border-top:1px solid #f1f5f9; text-align:center;">
+      <div style="font-size:12px; color:#94a3b8; font-weight:600; margin-bottom:10px; letter-spacing:1px; text-transform:uppercase;">📚 지난 호 모아보기</div>
+      <div style="font-size:13px; color:#475569; line-height:1.6; margin-bottom:16px;">
+        놓친 호가 있으신가요?<br>
+        Vol.01~09 전체를 한 곳에서 확인하실 수 있습니다.
+      </div>
+      <a href="https://bluetns.github.io/newsletter/" target="_blank" rel="noopener noreferrer" style="display:inline-block; background:#fff; color:#0a1628; font-size:13px; font-weight:700; padding:11px 24px; border-radius:8px; text-decoration:none; border:1.5px solid #0a1628; letter-spacing:0.3px;">전체 아카이브 보기 →</a>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">(주)블루티엔에스 BLUETNS</div>
+        <div class="footer-addr">
+          서울 서초구 강남대로 101길 43<br>
+          대표이사: 박인호 | Trust base is our pride
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="https://bluetns.co.kr/free" class="footer-link" target="_blank" rel="noopener noreferrer">홈페이지</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      블루레터는 매월 2·4주 화요일 오전 10시에 발행됩니다.<br>
+      본 메일은 블루티엔에스 뉴스레터 수신에 동의하신 분께 발송됩니다.<br>
+      수신을 원하지 않으시면 <a href="#" class="unsubscribe">여기</a>를 클릭해 주세요.
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
