@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[블루레터 Vol.10] AI가 만든 사이버 공격, 방어는 어떻게 달라져야 하나</title>
+<style>
+  body { margin:0; padding:0; background-color:#f0f2f5; font-family:'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif; }
+  a { text-decoration:none; }
+  @media (max-width: 480px) {
+    .wrap { padding:16px 8px !important; }
+    .pad { padding:24px 20px !important; }
+    .hero-pad { padding:32px 20px !important; }
+    h1.title { font-size:20px !important; }
+    .stats3 td { display:block !important; width:100% !important; margin-bottom:10px; }
+    .bar-row td { display:block !important; width:100% !important; }
+    .split2 td { display:block !important; width:100% !important; }
+    .split2 td + td { margin-top:12px; }
+  }
+</style>
+</head>
+<body>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f0f2f5;">
+  <tr>
+    <td align="center" class="wrap" style="padding:32px 16px;">
+
+      <table width="680" cellpadding="0" cellspacing="0" border="0" style="max-width:680px; width:100%;">
+
+        <!-- Header -->
+        <tr>
+          <td style="background-color:#0a1628; border-radius:16px 16px 0 0; padding:24px 36px;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td>
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="background-color:#2563eb; border-radius:8px; width:36px; height:36px; text-align:center; vertical-align:middle;">
+                        <span style="color:#ffffff; font-size:16px; font-weight:900;">B</span>
+                      </td>
+                      <td style="padding-left:10px;">
+                        <div style="color:#ffffff; font-size:15px; font-weight:700;">블루레터</div>
+                        <div style="color:#64748b; font-size:11px; letter-spacing:1px;">by BLUETNS</div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td align="right">
+                  <span style="background-color:#1e3a5f; color:#93c5fd; font-size:11px; font-weight:600; padding:6px 12px; border-radius:20px;">Vol.10 · 2026.09.22</span>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Hero -->
+        <tr>
+          <td class="hero-pad" style="background:linear-gradient(135deg,#0f2544,#1a3a6b); padding:44px 36px;">
+            <div style="display:inline-block; background-color:rgba(37,99,235,0.3); color:#93c5fd; font-size:11px; font-weight:600; padding:5px 12px; border-radius:20px; margin-bottom:16px; letter-spacing:1px;">🤖 이번 호 주제 — AI 보안</div>
+            <h1 class="title" style="color:#ffffff; font-size:26px; font-weight:800; line-height:1.4; margin:12px 0;">
+              AI가 만든 사이버 공격,<br>
+              <span style="color:#60a5fa;">방어는 어떻게 달라져야 하나</span>
+            </h1>
+            <p style="color:#94a3b8; font-size:14px; line-height:1.7; margin:0;">
+              올해 상반기 국가 배후 해킹 공격은 158건, 그중 한국은 19번이나 표적이 됐습니다.<br>
+              공격자가 AI를 쓰기 시작했다면, 방어도 같은 무기가 필요합니다.
+            </p>
+          </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+          <td class="pad" style="background-color:#ffffff; padding:40px 36px;">
+
+            <!-- Key stat -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
+              <tr>
+                <td style="background-color:#eff6ff; border-left:4px solid #2563eb; padding:16px 20px; border-radius:0 8px 8px 0;">
+                  <div style="font-size:11px; font-weight:700; color:#2563eb; letter-spacing:1px; margin-bottom:4px;">이번 호 핵심</div>
+                  <div style="font-size:14px; color:#1e3a5f; font-weight:600; line-height:1.7;">
+                    2026년 상반기 국가 배후 APT 공격 <strong>158건</strong>, 전년 동기 대비 <strong>7.5% 증가</strong>.<br>
+                    한국은 <strong>19회 표적</strong>으로 전 세계에서 가장 많이 공격받은 국가였습니다. (2위 미국 8회)
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+            <p style="font-size:14px; color:#334155; line-height:1.8; margin:0 0 24px;">
+              보안업체 S2W가 발표한 「2026 상반기 국가 배후 APT 그룹 위협 동향 보고서」에 따르면, 올해 상반기에만 158건의 국가 배후 사이버 공격이 확인됐습니다. 이 가운데 북한이 99건으로 압도적 1위, 중국 33건, 러시아 26건이 뒤를 이었습니다. 그리고 이 공격들의 표적 1순위는 다름 아닌 대한민국이었습니다.
+            </p>
+
+            <!-- 국가별 공격 건수 바 차트 -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px; background-color:#f8fafc; border-radius:12px; padding:4px;">
+              <tr><td style="padding:20px 20px 8px;">
+                <div style="font-size:11px; font-weight:700; color:#64748b; letter-spacing:1px; margin-bottom:16px;">2026 상반기 국가 배후 APT 공격 건수 (S2W)</div>
+
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" class="bar-row" style="margin-bottom:10px;">
+                  <tr>
+                    <td width="90" style="font-size:12px; color:#334155; font-weight:600;">🇰🇵 북한</td>
+                    <td>
+                      <table cellpadding="0" cellspacing="0" border="0" width="100%"><tr>
+                        <td style="background:linear-gradient(90deg,#2563eb,#60a5fa); border-radius:6px; height:20px; width:100%;"></td>
+                      </tr></table>
+                    </td>
+                    <td width="40" align="right" style="font-size:12px; color:#0f172a; font-weight:700; padding-left:8px;">99</td>
+                  </tr>
+                </table>
+
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" class="bar-row" style="margin-bottom:10px;">
+                  <tr>
+                    <td width="90" style="font-size:12px; color:#334155; font-weight:600;">🇨🇳 중국</td>
+                    <td>
+                      <table cellpadding="0" cellspacing="0" border="0" width="34%"><tr>
+                        <td style="background-color:#93c5fd; border-radius:6px; height:20px; width:100%;"></td>
+                      </tr></table>
+                    </td>
+                    <td width="40" align="right" style="font-size:12px; color:#0f172a; font-weight:700; padding-left:8px;">33</td>
+                  </tr>
+                </table>
+
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" class="bar-row" style="margin-bottom:16px;">
+                  <tr>
+                    <td width="90" style="font-size:12px; color:#334155; font-weight:600;">🇷🇺 러시아</td>
+                    <td>
+                      <table cellpadding="0" cellspacing="0" border="0" width="27%"><tr>
+                        <td style="background-color:#bfdbfe; border-radius:6px; height:20px; width:100%;"></td>
+                      </tr></table>
+                    </td>
+                    <td width="40" align="right" style="font-size:12px; color:#0f172a; font-weight:700; padding-left:8px;">26</td>
+                  </tr>
+                </table>
+
+                <div style="font-size:10px; color:#94a3b8; padding:0 0 16px;">출처: S2W 「2026 상반기 국가 배후 APT 그룹 위협 동향 보고서」</div>
+              </td></tr>
+            </table>
+
+            <!-- 3 stat cards -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" class="stats3" style="margin-bottom:28px;">
+              <tr>
+                <td width="33.3%" style="padding-right:6px;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="background-color:#0a1628; border-radius:10px; padding:18px 14px; text-align:center;">
+                    <div style="color:#60a5fa; font-size:22px; font-weight:800;">158건</div>
+                    <div style="color:#94a3b8; font-size:11px; margin-top:4px;">상반기 APT 공격</div>
+                  </td></tr></table>
+                </td>
+                <td width="33.3%" style="padding:0 3px;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="background-color:#0a1628; border-radius:10px; padding:18px 14px; text-align:center;">
+                    <div style="color:#60a5fa; font-size:22px; font-weight:800;">+7.5%</div>
+                    <div style="color:#94a3b8; font-size:11px; margin-top:4px;">전년 동기 대비 증가</div>
+                  </td></tr></table>
+                </td>
+                <td width="33.3%" style="padding-left:6px;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="background-color:#0a1628; border-radius:10px; padding:18px 14px; text-align:center;">
+                    <div style="color:#60a5fa; font-size:22px; font-weight:800;">19회</div>
+                    <div style="color:#94a3b8; font-size:11px; margin-top:4px;">한국 표적 · 세계 1위</div>
+                  </td></tr></table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Section: 공격이 AI로 바뀌고 있다 -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:14px;">
+              <tr><td>
+                <table cellpadding="0" cellspacing="0" border="0"><tr>
+                  <td style="background-color:#2563eb; border-radius:50%; width:6px; height:6px;"></td>
+                  <td style="padding-left:8px; font-size:11px; font-weight:700; color:#2563eb; letter-spacing:1px;">공격은 이미 AI를 쓰고 있습니다</td>
+                </tr></table>
+              </td></tr>
+            </table>
+
+            <p style="font-size:14px; color:#334155; line-height:1.8; margin:0 0 20px;">
+              보안업체 포티넷(Fortinet)이 발표한 2026년 위협 전망 보고서는 "AI가 새로운 표준 공격 수단이 됐다"고 밝혔습니다. 실제로 북한 배후 조직은 생성형 AI와 딥페이크를 활용해 채용 담당자·개발자를 사칭하는 가짜 구인 공고, 오픈소스 코드 저장소 침투 등으로 공격 방식을 고도화하고 있습니다.
+            </p>
+
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:24px;">
+              <tr>
+                <td style="padding-bottom:12px;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td valign="top" style="background-color:#0a1628; border-radius:50%; width:22px; height:22px; text-align:center; vertical-align:middle; font-size:11px; font-weight:700; color:#ffffff;">1</td>
+                      <td style="padding-left:10px; font-size:13px; color:#334155; line-height:1.6;"><strong style="color:#0f172a;">멀티모달 딥페이크 피싱</strong> — 임원·거래처 목소리와 얼굴을 그대로 복제해 송금·정보 요청을 지시합니다.</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding-bottom:12px;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td valign="top" style="background-color:#0a1628; border-radius:50%; width:22px; height:22px; text-align:center; vertical-align:middle; font-size:11px; font-weight:700; color:#ffffff;">2</td>
+                      <td style="padding-left:10px; font-size:13px; color:#334155; line-height:1.6;"><strong style="color:#0f172a;">가짜 구인 공고·코드 저장소 침투</strong> — 개발자를 표적으로 한 사회공학 기법이 AI로 더 정교해졌습니다.</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td valign="top" style="background-color:#0a1628; border-radius:50%; width:22px; height:22px; text-align:center; vertical-align:middle; font-size:11px; font-weight:700; color:#ffffff;">3</td>
+                      <td style="padding-left:10px; font-size:13px; color:#334155; line-height:1.6;"><strong style="color:#0f172a;">섀도우 에이전트(Shadow Agent)</strong> — 직원이 무단으로 도입한 AI 도구가 새로운 침투 경로가 되고 있습니다.</td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Quote -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
+              <tr>
+                <td style="background-color:#f8fafc; border-radius:12px; padding:24px 28px;">
+                  <div style="font-size:26px; color:#93c5fd; font-weight:900; line-height:1; margin-bottom:8px;">"</div>
+                  <div style="font-size:14px; color:#1e293b; font-weight:600; line-height:1.7; margin-bottom:10px;">
+                    공격자가 AI를 무기로 쓰는 시대에, 사람이 로그를 하나하나 들여다보는 방식으로는 속도를 따라갈 수 없습니다. 방어도 AI가 AI를 상대하는 구조로 바뀌어야 합니다.
+                  </div>
+                  <div style="font-size:12px; color:#64748b;">— 포티넷 2026 위협 전망 보고서 요약</div>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Section: 방어도 AI로 -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:14px;">
+              <tr><td>
+                <table cellpadding="0" cellspacing="0" border="0"><tr>
+                  <td style="background-color:#2563eb; border-radius:50%; width:6px; height:6px;"></td>
+                  <td style="padding-left:8px; font-size:11px; font-weight:700; color:#2563eb; letter-spacing:1px;">그렇다면 방어는 어떻게 달라져야 하나</td>
+                </tr></table>
+              </td></tr>
+            </table>
+
+            <p style="font-size:14px; color:#334155; line-height:1.8; margin:0 0 20px;">
+              Bitdefender GravityZone은 '탐지 후 대응'이 아니라 '실행 전 차단(Prevention-First)'을 원칙으로 합니다. 공격이 AI로 빨라진 만큼, 방어도 사람이 아니라 AI가 먼저 판단하고 먼저 막는 구조가 핵심입니다.
+            </p>
+
+            <!-- AI vs AI split -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" class="split2" style="margin-bottom:24px;">
+              <tr>
+                <td width="49%" valign="top" style="background-color:#fef2f2; border-radius:12px 0 0 12px; padding:20px;">
+                  <div style="font-size:11px; font-weight:700; color:#dc2626; letter-spacing:1px; margin-bottom:8px;">⚔️ 공격에 쓰이는 AI</div>
+                  <div style="font-size:13px; color:#7f1d1d; line-height:1.7;">
+                    · 목소리·얼굴 복제 딥페이크<br>
+                    · 정상 도구를 위장한 무단 AI 에이전트<br>
+                    · 자동화된 대규모 피싱 생성
+                  </div>
+                </td>
+                <td width="49%" valign="top" style="background-color:#eff6ff; border-radius:0 12px 12px 0; padding:20px;">
+                  <div style="font-size:11px; font-weight:700; color:#2563eb; letter-spacing:1px; margin-bottom:8px;">🛡 방어에 쓰이는 AI</div>
+                  <div style="font-size:13px; color:#1e3a5f; line-height:1.7;">
+                    · 행동 기반 이상 탐지 (PHASR)<br>
+                    · GAN 기반 적대적 AI 사전 방어<br>
+                    · LLM 기반 자동 조사 (AI Assistant)
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+            <!-- PHASR highlight -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
+              <tr>
+                <td style="background-color:#0a1628; border-radius:14px; padding:28px 28px;">
+                  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td width="90" valign="top">
+                        <div style="color:#60a5fa; font-size:32px; font-weight:900; line-height:1;">95%</div>
+                      </td>
+                      <td valign="top" style="padding-left:12px;">
+                        <div style="color:#ffffff; font-size:14px; font-weight:700; margin-bottom:6px;">GravityZone PHASR — 공격 표면 최대 95% 축소</div>
+                        <div style="color:#94a3b8; font-size:12.5px; line-height:1.7;">
+                          공격의 84%는 정상 프로그램(LOLBins)을 악용합니다. PHASR는 사용자별·기기별 행동 패턴을 AI로 학습해, 실제 업무에 쓰이지 않는 도구의 악용 경로를 선제적으로 차단합니다.
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Insight box -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:28px;">
+              <tr>
+                <td style="background-color:#0a1628; border-radius:14px; padding:28px 28px;">
+                  <div style="color:#60a5fa; font-size:11px; font-weight:700; letter-spacing:1.5px; margin-bottom:10px;">💡 BLUETNS INSIGHT</div>
+                  <div style="color:#e2e8f0; font-size:14px; line-height:1.8;">
+                    공격 방식이 AI로 바뀌었다는 건 "더 조심하자"는 구호로는 대응이 안 된다는 뜻입니다. 사람이 판단하기 전에 시스템이 먼저 막아야 하는 시대입니다. 특히 도면·설계 데이터처럼 유출 시 되돌릴 수 없는 자산을 다루는 AEC·제조업이라면, 지금이 탐지 중심에서 예방 중심 보안으로 전환할 시점입니다.
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+            <!-- CTA -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:20px;">
+              <tr>
+                <td style="background-color:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:24px 24px; text-align:center;">
+                  <div style="font-size:15px; font-weight:700; color:#0f172a; margin-bottom:6px;">AI 공격 시대, 우리 회사 보안은 안전한가요?</div>
+                  <div style="font-size:13px; color:#64748b; margin-bottom:16px; line-height:1.6;">Bitdefender GravityZone의 예방 중심 AI 보안을 무료로 상담받아 보세요.</div>
+                  <a href="https://tally.so/r/1AxZZO" target="_blank" style="display:inline-block; background-color:#0a1628; color:#ffffff; font-size:13px; font-weight:700; padding:12px 28px; border-radius:8px;">무료 상담 신청하기 →</a>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Archive link -->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="center" style="padding:8px 0;">
+                  <a href="https://bluetns.github.io/newsletter/index.html" target="_blank" style="display:inline-block; color:#2563eb; font-size:13px; font-weight:700; padding:10px 20px; border:1px solid #dbeafe; border-radius:8px;">📚 지난 호 모아보기 →</a>
+                </td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+
+        <!-- Next issue -->
+        <tr>
+          <td style="background-color:#ffffff; border-top:1px solid #f1f5f9; padding:16px 36px;">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="background-color:#eff6ff; border-radius:8px; width:36px; height:36px; text-align:center; vertical-align:middle; font-size:18px;">🛡️</td>
+                <td style="padding-left:14px;">
+                  <div style="font-size:10px; font-weight:700; color:#94a3b8; letter-spacing:1px; margin-bottom:3px;">다음 호 예고 · 10월 13일</div>
+                  <div style="font-size:13px; font-weight:700; color:#334155;">Bitdefender vs 국내외 백신 — 2026년 엔드포인트 보안 무엇이 다른가</div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="background-color:#0a1628; border-radius:0 0 16px 16px; padding:24px 36px;">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:16px; margin-bottom:16px;">
+              <tr>
+                <td>
+                  <div style="color:#ffffff; font-size:13px; font-weight:700; margin-bottom:4px;">(주)블루티엔에스 BLUETNS</div>
+                  <div style="color:#475569; font-size:11px; line-height:1.6;">
+                    서울 서초구 강남대로 101길 43<br>
+                    대표이사: 박인호 | Trust base is our pride
+                  </div>
+                </td>
+                <td align="right" valign="top">
+                  <a href="https://bluetns.co.kr/free" target="_blank" style="color:#64748b; font-size:11px;">홈페이지</a>
+                </td>
+              </tr>
+            </table>
+            <div style="font-size:11px; color:#334155; line-height:1.6;">
+              블루레터는 매월 2·4주 화요일 오전 10시에 발행됩니다.<br>
+              본 메일은 블루티엔에스 뉴스레터 수신에 동의하신 분께 발송됩니다.
+            </div>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
